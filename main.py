@@ -11,10 +11,11 @@ def main(page: ft.Page):
         {'title': 'Academia', 'done': False}
     ]
 
-    def change(e):
-        for hl in habits_list:
-            if hl['title'] == e.control.label:
-                hl['done'] = e.control.value
+    def change(e = None):
+        if e:
+            for hl in habits_list:
+                if hl['title'] == e.control.label:
+                    hl['done'] = e.control.value
             
         done = list(filter(lambda x: x['done'], habits_list))
         total = len(done) / len(habits_list)
@@ -39,6 +40,7 @@ def main(page: ft.Page):
         habits.update()
         texto = ""
         e.control.update()
+        change()
 
 
 
